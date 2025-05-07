@@ -8,7 +8,7 @@ load_dotenv()
 PG_USER = os.getenv("PG_USER")
 PG_PASSWORD = os.getenv("PG_PASSWORD")
 PG_HOST = os.getenv("PG_HOST")
-PG_PORT = int(os.getenv("PG_PORT", "5432"))
+PG_PORT = int(os.getenv("PG_PORT"))
 PG_DB = os.getenv("PG_DB")
 
 
