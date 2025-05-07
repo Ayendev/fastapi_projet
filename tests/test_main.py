@@ -19,7 +19,7 @@ def test_client():
     with TestClient(app) as client:
         yield client
     SQLModel.metadata.drop_all(engine)
-    engine = create_engine(url=DATABASE_URL, echo=True)
+    #engine = create_engine(url=DATABASE_URL, echo=True)
 
 def test_create_item(test_client: TestClient):
     item_data = {"name": "écouteur", "price": 10.99, "in_stock": True}
