@@ -18,7 +18,7 @@ PG_DB = os.getenv("PG_DB")
 
 
 #DATABASE_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
-DATABASE_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}.oregon-postgres.render.com:{PG_PORT}/{PG_DB}"
+DATABASE_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
 #TEST_DATABASE_URL = f"postgresql://{TEST_PG_USER}:{TEST_PG_PASSWORD}@{TEST_PG_HOST}:{TEST_PG_PORT}/{TEST_PG_DB}"
 
 
