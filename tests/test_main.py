@@ -6,19 +6,26 @@ from sqlmodel import create_engine, SQLModel
 from typing import List
 
 
-
+def clear_test_db():
+    SQLModel.metadata.drop_all(engine)
 
 
 @pytest.fixture(name="test_client")
 def test_client():
 
-    global engine
+    clear_test_db() #ajouter cette ligne
+    SQLModel.metadata.create_all(engine)
+    with TestClient(app) as client:
+        yield client
+    clear_test_db()
+    
+    """ global engine
     engine = create_engine(url=DATABASE_URL, echo=True)
     SQLModel.metadata.create_all(engine)
 
     with TestClient(app) as client:
         yield client
-    SQLModel.metadata.drop_all(engine)
+    SQLModel.metadata.drop_all(engine) """
     #engine = create_engine(url=DATABASE_URL, echo=True)
 
 def test_create_item(test_client: TestClient):
