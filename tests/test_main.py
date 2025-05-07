@@ -3,10 +3,9 @@ from main import app
 import pytest
 from database import DATABASE_URL , engine
 from sqlmodel import create_engine, SQLModel
-import database 
 from typing import List
-from dotenv import load_dotenv
-import os
+
+
 
 
 

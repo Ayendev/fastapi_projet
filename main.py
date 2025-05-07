@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from typing import List
-from database import create_db_and_tables, engine , DATABASE_URL
+from database import create_db_and_tables, engine
 from models.items import Item 
 from models.users import User 
-from sqlmodel import Session, select, create_engine, SQLModel
-import os
+from sqlmodel import Session, select
+
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
