@@ -9,11 +9,11 @@ from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global engine
-    engine = create_engine(url=DATABASE_URL, echo=True) # Assurer le démarrage de la base de données principale
+    #global engine
+    #engine = create_engine(url=DATABASE_URL, echo=True) # Assurer le démarrage de la base de données principale
     await create_db_and_tables()
     yield
-    SQLModel.metadata.drop_all(engine) # Nettoyage à l'arrêt (pour les tests, cela ne sera peut-être pas nécessaire pour la production)
+    #SQLModel.metadata.drop_all(engine) # Nettoyage à l'arrêt (pour les tests, cela ne sera peut-être pas nécessaire pour la production)
 
 app = FastAPI(lifespan=lifespan)
 

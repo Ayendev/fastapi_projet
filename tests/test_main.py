@@ -1,27 +1,37 @@
 from fastapi.testclient import TestClient
 from main import app
 import pytest
+from database import DATABASE_URL , engine
+from sqlmodel import create_engine, SQLModel
+import database 
 from typing import List
+from dotenv import load_dotenv
+import os
 
 
 
 @pytest.fixture(name="test_client")
 def test_client():
-    
+
+    global engine
+    #engine = create_engine(url=DATABASE_URL, echo=True)
+    #SQLModel.metadata.create_all(engine)
+
     with TestClient(app) as client:
         yield client
-
+    SQLModel.metadata.drop_all(engine)
+    engine = create_engine(url=DATABASE_URL, echo=True)
 
 def test_create_item(test_client: TestClient):
-    item_data = {"name": "Test Item", "price": 10.99, "in_stock": True}
+    item_data = {"name": "écouteur", "price": 10.99, "in_stock": True}
     response = test_client.post("/items", json=item_data)
     assert response.status_code == 200
     created_item = response.json()
-    assert created_item["name"] == "Test Item"
+    assert created_item["name"] == "écouteur"
     assert created_item["price"] == 10.99
     assert created_item["in_stock"] == True
     assert created_item["id"] is not None
-    print(created_item)
+
 
 
 def test_read_items(test_client: TestClient):
@@ -33,7 +43,6 @@ def test_read_items(test_client: TestClient):
     assert response.status_code == 200
     items: List[dict] = response.json()
 
-    print(items)
     assert len(items) >= 2
     assert items[0]["name"] in ("clavier", "casque")
     assert items[1]["name"] in ("clavier", "casque")
@@ -49,7 +58,7 @@ def test_read_item(test_client: TestClient):
     assert response.status_code in (200, 404)
     if response.status_code == 200:
         item = response.json()
-        assert item["name"] in ("casque", "clavier", "écran")
+        assert item["name"] in ("écouteur","casque", "clavier", "écran")
 
 
 

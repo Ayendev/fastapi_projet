@@ -10,9 +10,16 @@ PG_PASSWORD = os.getenv("PG_PASSWORD")
 PG_HOST = os.getenv("PG_HOST")
 PG_PORT = int(os.getenv("PG_PORT", "5432"))
 PG_DB = os.getenv("PG_DB")
+#TEST_PG_USER = os.getenv("TEST_PG_USER")
+# TEST_PG_PASSWORD = os.getenv("TEST_PG_PASSWORD")
+# TEST_PG_HOST = os.getenv("TEST_PG_HOST")
+# TEST_PG_PORT = int(os.getenv("TEST_PG_PORT", "3306"))
+# TEST_PG_DB = os.getenv("TEST_PG_DB")
 
 
-DATABASE_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
+#DATABASE_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
+DATABASE_URL = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}.oregon-postgres.render.com:{PG_PORT}/{PG_DB}"
+#TEST_DATABASE_URL = f"postgresql://{TEST_PG_USER}:{TEST_PG_PASSWORD}@{TEST_PG_HOST}:{TEST_PG_PORT}/{TEST_PG_DB}"
 
 
 
