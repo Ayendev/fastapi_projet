@@ -13,8 +13,8 @@ from typing import List
 def test_client():
 
     global engine
-    #engine = create_engine(url=DATABASE_URL, echo=True)
-    #SQLModel.metadata.create_all(engine)
+    engine = create_engine(url=DATABASE_URL, echo=True)
+    SQLModel.metadata.create_all(engine)
 
     with TestClient(app) as client:
         yield client
